@@ -51,8 +51,10 @@ function getBook() {
     "year" => 2021,
     "stock" => 4,
     "category" => "Fiksi",
+    "category_id" => 1,
     "description" => "Kumpulan puisi dan cerita pendek dari berbagai penulis Nusantara.",
     "authors" => ["Pramoedya Ananta Toer", "Sapardi Djoko Damono"],
+    "author_ids" => [4, 5],
   ];
 }
 

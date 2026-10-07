@@ -1,5 +1,4 @@
 <?php
-
 function getCategories() {
   return [
     ["id" => 1, "name" => "Fiksi",     "description" => "Novel dan cerita rekaan",       "total_books" => 3],
@@ -8,7 +7,6 @@ function getCategories() {
     ["id" => 4, "name" => "Teknologi", "description" => "Buku pemrograman dan teknologi", "total_books" => 0],
   ];
 }
-
 
 function getCategory() {
   return ["id" => 1, "name" => "Fiksi", "description" => "Novel dan cerita rekaan", "total_books" => 3];

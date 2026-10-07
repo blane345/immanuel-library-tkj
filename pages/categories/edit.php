@@ -8,7 +8,7 @@
 </head>
 <body>
   <?php
-    require '../../repositories/category-repository.php';
+    require_once __DIR__ . '/../../repositories/category-repository.php';
     $category = getCategory();
   ?>
   <div class="app-shell">
