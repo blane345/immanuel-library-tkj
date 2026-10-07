@@ -8,11 +8,8 @@
 </head>
 <body>
   <?php
-  $category = [
-      "id"          => 1,
-      "name"        => "Fiksi",
-      "description" => "Novel dan cerita rekaan",
-  ];
+  require_once __DIR__ . '/../../repositories/category-repository.php';
+  $category = getCategory();
   ?>
   <div class="app-shell">
   <?php require_once('../../components/admin/sidebar.php'); ?>
