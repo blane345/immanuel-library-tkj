@@ -46,7 +46,9 @@
 
             <div class="form-actions">
               <a href="index.php" class="btn btn-outline">Batal</a>
-              <button type="submit" name="store" class="btn btn-primary">Simpan Pengguna</button>
+              <form method="POST" action="../../actions/users/store.php">
+              <button type="submit" name="store">Simpan</button>
+              </form>
             </div>
           </div>
         </form>
