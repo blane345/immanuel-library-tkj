@@ -60,7 +60,7 @@
             </div>
             <div class="form-actions">
               <button type="button" class="btn btn-outline">Batal</button>
-              <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+             <button type="submit" name="update">Simpan Perubahan</button>
             </div>
           </div>
         </form>
