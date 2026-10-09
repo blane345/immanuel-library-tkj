@@ -55,7 +55,7 @@
                   <div class="cell-actions">
                     <a href="edit.php?id=<?= $author['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
                     <<a href="../../actions/authors/destroy.php?id=<?= $author['id'] ?>"
-                    onclick="return confirm('Yakin ingin menghapus penulis ini?')">Hapus</a>
+                     onclick="return confirm('Yakin ingin menghapus penulis ini?')">Hapus</a>
                   </div>
                 </td>
               </tr>
