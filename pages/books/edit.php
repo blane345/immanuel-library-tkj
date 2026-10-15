@@ -4,7 +4,6 @@ require_once __DIR__ . "/../../repositories/category-repository.php";
 require_once __DIR__ . "/../../repositories/author-repository.php";
 
 $id = $_GET['id'];
-
 $book = getBook($id);
 $categories = getCategories();
 $authors = getAuthors();
