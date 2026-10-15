@@ -6,7 +6,7 @@ function getBooks()
   global $pdo;
 
   $query = "select b.id,b.title,b.stock,c.name as category from books b
-          left join categories c on b.category.id = c.id
+          left join categories c on b.category_id = c.id
           ";
   $stmt = $pdo->prepare($query);
   $stmt ->execute();
