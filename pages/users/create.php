@@ -1,3 +1,8 @@
+<?php
+$pageTitle = "Tambah Pengguna";
+$pageSubtitle = "Buat akun pengguna baru beserta perannya";
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -8,13 +13,10 @@
 </head>
 <body>
   <div class="app-shell">
-  <?php require_once('../../components/admin/sidebar.php'); ?>
+  <?php require_once __DIR__ . "/../../components/admin/sidebar.php" ?>
+
     <main class="app-main">
-    <?php
-      $pageTitle = "Tambah Pengguna";
-      $pageSubtitle = "Buat akun pengguna baru beserta perannya";
-      require '../../components/admin/topbar.php';
-    ?>
+    <?php require_once __DIR__ . "/../../components/admin/topbar.php" ?>
 
       <div class="app-content">
         <form method="POST" action="../../actions/users/store.php">
@@ -46,9 +48,7 @@
 
             <div class="form-actions">
               <a href="index.php" class="btn btn-outline">Batal</a>
-              <form method="POST" action="../../actions/users/store.php">
-              <button type="submit" name="store">Simpan</button>
-              </form>
+              <button type="submit" name="store" class="btn btn-primary">Simpan Pengguna</button>
             </div>
           </div>
         </form>

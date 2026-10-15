@@ -1,9 +1,9 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['store'])) {
-  echo "<h3>Data kategori baru diterima:</h3>";
-  echo "<pre>";
-  print_r($_POST);
-  echo "</pre>";
-} else {
-  echo "Tidak ada data yang dikirim.";
+if (isset($_POST['store']) && $_SERVER['REQUEST_METHOD'] === "POST") {
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+
+    print_r($_POST);
 }
+
+?>

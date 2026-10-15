@@ -1,27 +1,30 @@
+<?php
+require_once __DIR__ . "/../../repositories/category-repository.php";
+require_once __DIR__ . "/../../repositories/author-repository.php";
+
+$categories = getCategories();
+$authors = getAuthors();
+
+$pageTitle = "Tambah Buku";
+$pageSubtitle = "Lengkapi data buku, kategori, dan penulis";
+?>
+
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tambah Buku - Perpustakaan Digital</title>
   <link rel="stylesheet" href="../../styles/books/create.css">
 </head>
-<body>
-  <?php
-    require '../../repositories/category-repository.php';
-    require '../../repositories/author-repository.php';
 
-    $categories = getCategories();
-    $authors = getAuthors();
-  ?>
+<body>
   <div class="app-shell">
-  <?php require_once('../../components/admin/sidebar.php'); ?>
+    <?php require_once __DIR__ . "/../../components/admin/sidebar.php" ?>
+
     <main class="app-main">
-    <?php
-      $pageTitle = "Tambah Buku";
-      $pageSubtitle = "Lengkapi data buku, kategori, dan penulis";
-      require '../../components/admin/topbar.php';
-    ?>
+      <?php require_once __DIR__ . "/../../components/admin/topbar.php" ?>
 
       <div class="app-content">
         <form method="POST" action="../../actions/books/store.php">
@@ -77,7 +80,7 @@
 
             <div class="form-actions">
               <a href="index.php" class="btn btn-outline">Batal</a>
-              <button type="submit" class="btn btn-primary">Simpan Buku</button>
+              <button type="submit" name="store" class="btn btn-primary">Simpan Buku</button>
             </div>
           </div>
         </form>
@@ -85,4 +88,5 @@
     </main>
   </div>
 </body>
+
 </html>

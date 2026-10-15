@@ -1,9 +1,10 @@
 <?php
-if (isset($_POST['id'])) {
-  echo "<h3>Data kategori yang diubah diterima:</h3>";
-  echo "<pre>";
-  print_r($_POST);
-  echo "</pre>";
-} else {
-  echo "Tidak ada data yang dikirim.";
+if (isset($_POST['update']) && $_SERVER['REQUEST_METHOD'] === "POST") {
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+
+    print_r($_POST);
 }
+
+?>

@@ -1,9 +1,15 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
-  echo "<h3>Data buku diperbarui:</h3>";
-  echo "<pre>";
-  print_r($_POST);
-  echo "</pre>";
-} else {
-  echo "Tidak ada data yang dikirim.";
+if (isset($_POST['update']) && $_SERVER['REQUEST_METHOD'] === "POST") {
+    $id = $_POST['id'];
+    $title = $_POST['title'];
+    $isbn = $_POST['isbn'];
+    $year = $_POST['year'];
+    $stock = $_POST['stock'];
+    $categoryId = $_POST['category_id'];
+    $description = $_POST['description'];
+    $authorIds = isset($_POST['author_ids']) ? $_POST['author_ids'] : [];
+
+    print_r($_POST);
 }
+
+?>
