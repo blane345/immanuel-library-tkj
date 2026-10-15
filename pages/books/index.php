@@ -3,7 +3,7 @@ require_once __DIR__ . "/../../repositories/book-repository.php";
 
 $books = getBooks();
 
-<<<<<<< HEAD
+<<<<<<<< HEAD
 $pageTitle = "Manajemen Buku kita semua";
 =======
 $pageTitle = "Manajemen Buku";
