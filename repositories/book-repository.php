@@ -1,54 +1,74 @@
 <?php
-require_once __DIR__."/../config/database.php";
+
+require_once __DIR__ . "/../config/database.php";
+
 
 function getBooks()
 {
-  global $pdo;
+    global $pdo;
 
-  $query = "select b.id,b.title,b.stock,c.name as category from books b
-          left join categories c on b.category_id = c.id
-          ";
-  $stmt = $pdo->prepare($query);
-  $stmt ->execute();
+    $query = "select b.id, b.title, b.stock, c.name as category from books b
+              left join categories c on b.category_id = c.id";
 
-  $books =$stmt->fetchAll();
-  $query = "select ba.book_id, a.name from book_author ba   
-          left join authors a on ba.author_id = a.id       
-         ";
-   $stmt = $pdo->prepare($query);
-   $stmt -> execute();
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
 
-   $bookauthors = $stmt->fetchAll();
+    $books = $stmt->fetchAll();
 
+    $query = "select ba.book_id, a.name from book_author ba
+              left join authors a on ba.author_id = a.id";
 
-   $bookbyauthors=[];
-   foreach($bookauthors as $bookauthor) {
-    $bookauthors[$bookauthor['book_id']][] =$bookauthor['name'];
-   }
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
 
-   foreach($books as $index => $book){
-    $books[$index]['authors']= $bookauthors[$book['id']] ?? [];
-   }
+    $bookAuthors = $stmt->fetchAll();
 
-   
+    $bookByAuthors = [];
 
-  return $books;
+    foreach ($bookAuthors as $bookAuthor) {
+        $bookByAuthors[$bookAuthor['book_id']][] = $bookAuthor['name'];
+    }
+
+    foreach ($books as $index => $book) {
+        $books[$index]['authors'] = $bookByAuthors[$book['id']] ?? [];
+    }
+
+    return $books;
 }
 
-function getBook()
+function getBook($id)
 {
+    global $pdo;
 
-  $book = [
-    "id" => 5,
-    "title" => "Antologi Rasa Nusantara",
-    "isbn" => "978-602-1234-56-7",
-    "year" => 2021,
-    "stock" => 4,
-    "category_id" => 1,
-    "category" => "Fiksi",
-    "description" => "Kumpulan puisi dan cerita pendek dari berbagai penulis Nusantara.",
-    "author_ids" => [4, 5],
-    "authors" => ["Pramoedya Ananta Toer", "Sapardi Djoko Damono"],
-  ];
-  return $book;
+    $query = "select id, title, isbn, year, stock, category_id, description from books where id = :id";
+
+    $stmt = $pdo->prepare($query);
+
+    $stmt->execute([
+        'id' => $id
+    ]);
+
+    $book = $stmt->fetch();
+
+    if (!$book) {
+        header("Location: ../books/index.php");
+        exit;
+    }
+
+    $query = "select a.id from book_author ba
+              left join authors a on ba.author_id = a.id
+              where ba.book_id = :book_id";
+
+    $stmt = $pdo->prepare($query);
+
+    $stmt->execute([
+        'book_id' => $book['id']
+    ]);
+
+    $authorIds = $stmt->fetchAll();
+
+    $book['author_ids'] = array_column($authorIds, 'id');
+
+
+    return $book;
 }
