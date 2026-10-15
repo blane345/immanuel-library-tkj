@@ -14,7 +14,7 @@ PDO::ATTR_EMULATE_PREPARES => false
 ];
 
 try {
-    $pdo = new PDO($dsn, $username, $password);
+    $pdo = new PDO($dsn, $username, $password, $options);
 } catch (PDOException $error) {
     die("koneksi ke database gagal: " . $error->getmessage());
 }
