@@ -5,13 +5,32 @@ function getBooks()
 {
   global $pdo;
 
-  $query = "select * from books";
+  $query = "select b.id,b.title,b.stock,c.name as category from books b
+          left join categories c on b.category.id = c.id
+          ";
   $stmt = $pdo->prepare($query);
   $stmt ->execute();
 
   $books =$stmt->fetchAll();
-  print_r($books);
-  exit;
+  $query = "select ba.book_id, a.name from book_author ba   
+          left join authors a on ba.author_id = a.id       
+         ";
+   $stmt = $pdo->prepare($query);
+   $stmt -> execute();
+
+   $bookauthors = $stmt->fetchAll();
+
+
+   $bookbyauthors=[];
+   foreach($bookauthors as $bookauthor) {
+    $bookauthors[$bookauthor['book_id']][] =$bookauthor['name'];
+   }
+
+   foreach($books as $index => $book){
+    $books[$index]['authors']= $bookauthors[$book['id']] ?? [];
+   }
+
+   
 
   return $books;
 }
