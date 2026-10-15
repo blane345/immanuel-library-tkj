@@ -3,7 +3,11 @@ require_once __DIR__ . "/../../repositories/book-repository.php";
 
 $books = getBooks();
 
+<<<<<<< HEAD
 $pageTitle = "Manajemen Buku kita semua";
+=======
+$pageTitle = "Manajemen Buku";
+>>>>>>> 52334df72d2683e5e9928da2ef22b7d937d7c81e
 $pageSubtitle = "Kelola data buku, kategori, dan penulis";
 ?>
 
