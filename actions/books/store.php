@@ -10,6 +10,7 @@ if (isset($_POST['store']) && $_SERVER['REQUEST_METHOD'] === "POST") {
     $stock =htmlspecialchars($_POST['stock']);
     $description =htmlspecialchars($_POST['description']);
     $categoryId =htmlspecialchars($_POST['category_id']);
+    $authorIds = $_POST['author_ids'];
 
 
 
@@ -34,7 +35,7 @@ if (isset($_POST['store']) && $_SERVER['REQUEST_METHOD'] === "POST") {
     $query = "insert into book_author(book_id, author_id) values (:book_id, :author_id)";
     $stmt = $pdo->prepare($query);
 
-    $authorIds = $_POST['author_ids'];
+    
     foreach ($authorIds as $authorId) { 
     $stmt->execute([
         'book_id' => $bookId,
