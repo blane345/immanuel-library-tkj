@@ -1,16 +1,12 @@
 <?php
 require_once __DIR__ . "/../config/database.php";
-
 function getAuthors()
 {
- global $pdo;
-
- $query = "select id, name from authors";
- $stmt = $pdo->prepare($query);
- $stmt->execute();
-
-
-  $authors = $stmt->fetchall();
+  global $pdo;
+  $query = "select id, name from authors";
+  $stmt = $pdo->prepare($query);
+  $stmt->execute();
+  $authors = $stmt->fetchAll();
 
   return $authors;
 }
