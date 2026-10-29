@@ -52,7 +52,7 @@ $pageSubtitle = "Kelola data penulis yang terdaftar di sistem";
                       <?= $author['name'] ?>
                     </div>
                   </td>
-                  <td><span class="badge badge-muted"><?= $author['total_books'] ?> buku</span></td>
+                  <td><span class="badge badge-muted"><?= $author['total_books'] ?? 0 ?> Buku</span></td>
                   <td>
                     <div class="cell-actions">
                       <a href="edit.php?id=<?= $author['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
